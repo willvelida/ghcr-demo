@@ -9,6 +9,8 @@ on:
       - main
   workflow_dispatch:
 
+permissions: write-all
+
 jobs:
       push-store-image:
         runs-on: ubuntu-latest
@@ -26,7 +28,7 @@ jobs:
               username: ${{github.actor}}
               password: ${{secrets.GITHUB_TOKEN}}
               
-          - name: 'Build Inventory Image'
+          - name: 'Build frontend Image'
             run: |
               docker build . --tag ghcr.io/willvelida/frontend:latest
               docker push ghcr.io/willvelida/frontend:latest              
